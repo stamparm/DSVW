@@ -70,8 +70,8 @@ class ReqHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                     content += "<div><span>Attacks:</span></div><ul>%s</ul>" % ("".join("<li%s>%s - <a href=\"%s\">vulnerable</a>|<a href=\"%s\">exploit</a>|<a href=\"%s\" target=\"_blank\">info</a></li>" % (" class=\"disabled\" title=\"module 'python-lxml' not installed\"" if ("lxml.etree" not in sys.modules and any(_ in case[0].upper() for _ in ("XML", "XPATH"))) else "", case[0], case[1], case[2], case[3]) for case in CASES)).replace("<a href=\"None\">vulnerable</a>|", "<b>-</b>|")
             else:
                 code = httplib.NOT_FOUND
-        except:
-            content = traceback.format_exc()
+        except Exception, ex:
+            content = ex.output if isinstance(ex, subprocess.CalledProcessError) else traceback.format_exc()
             code = httplib.INTERNAL_SERVER_ERROR
         finally:
             self.send_response(code)
