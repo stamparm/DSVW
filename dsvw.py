@@ -36,7 +36,10 @@ class ReqHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 elif "path" in params:
                     content = (open(params["path"], "rb") if not "://" in params["path"] else urllib.urlopen(params["path"])).read()
                 elif "domain" in params:
+                  try:
                     content = subprocess.check_output("nslookup " + params["domain"], shell=True, stderr=subprocess.STDOUT)
+                  except subprocess.CalledProcessError as ex:
+                    content += ex.output
                 elif "xml" in params:
                     content = lxml.etree.tostring(lxml.etree.parse(cStringIO.StringIO(params["xml"])), pretty_print=True)
                 elif "name" in params:
@@ -85,7 +88,6 @@ class ReqHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
 class ThreadingServer(SocketServer.ThreadingMixIn, BaseHTTPServer.HTTPServer):
     pass
-
 if __name__ == "__main__":
     print "%s #v%s\n by: %s\n" % (NAME, VERSION, AUTHOR)
     init()
