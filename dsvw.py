@@ -3,7 +3,7 @@ import BaseHTTPServer, cgi, cStringIO, httplib, json, os, pickle, random, re, So
 try:
     import lxml.etree
 except ImportError:
-    print "[!] please install 'python-lxml' to (also) get access to XML vulnerabilities (e.g. 'apt-get install python-lxml')\n"
+    print "[!] please install 'python-lxml' to (also) get access to XML vulnerabilities (e.g. '%s')\n" % ("apt-get install python-lxml" if not subprocess.mswindows else "https://pypi.python.org/pypi/lxml")
 
 NAME, VERSION, GITHUB, AUTHOR, LICENSE = "Damn Small Vulnerable Web (DSVW) < 100 LoC (Lines of Code)", "0.1g", "https://github.com/stamparm/DSVW", "Miroslav Stampar (@stamparm)", "Public domain (FREE)"
 LISTEN_ADDRESS, LISTEN_PORT = "127.0.0.1", 65412
