@@ -11,7 +11,7 @@ Quick start
 Run the following command:
 ```
 $ python dsvw.py 
-Damn Small Vulnerable Web (DSVW) < 100 LoC (Lines of Code) #v0.1f
+Damn Small Vulnerable Web (DSVW) < 100 LoC (Lines of Code) #v0.1g
  by: Miroslav Stampar (@stamparm)
 
 [i] running HTTP server at '127.0.0.1:65412'...
@@ -19,7 +19,7 @@ Damn Small Vulnerable Web (DSVW) < 100 LoC (Lines of Code) #v0.1f
 
 and navigate your browser to http://127.0.0.1:65412/:
 
-![DSVW](http://i.imgur.com/AAE7bX1.png)
+![DSVW](http://i.imgur.com/cy3eQdv.png)
 
 Requirements
 ----
