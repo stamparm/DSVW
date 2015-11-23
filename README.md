@@ -3,17 +3,23 @@ Damn Small Vulnerable Web
 
 **Damn Small Vulnerable Web** (DSVW) is a deliberately vulnerable web application written in under 100 lines of code, created for educational purposes. It supports majority of (most popular) web application vulnerabilities together with appropriate attacks.
 
-![DSVW](http://i.imgur.com/W3Ske9B.png)
+![DSVW XSS](http://i.imgur.com/0wUbCR7.png)
 
 Quick start
 ----
+
+Run the following command:
 ```
 $ python dsvw.py 
-Damn Small Vulnerable Web (DSVW) < 100 LoC (Lines of Code) #v0.1b
+Damn Small Vulnerable Web (DSVW) < 100 LoC (Lines of Code) #v0.1d
  by: Miroslav Stampar (@stamparm)
 
 [i] running HTTP server at '0.0.0.0:65412'...
 ```
+
+and navigate your browser to http://127.0.0.1:65412/:
+
+![DSVW](http://i.imgur.com/W3Ske9B.png)
 
 Requirements
 ----
