@@ -1,7 +1,7 @@
 Damn Small Vulnerable Web
 =========
 
-**Damn Small Vulnerable Web** (DSVW) is a deliberately vulnerable web application written in under 100 lines of code, created for education purposes. It supports majority of (most popular) web application vulnerabilities together with appropriate attacks.
+**Damn Small Vulnerable Web** (DSVW) is a deliberately vulnerable web application written in under 100 lines of code, created for educational purposes. It supports majority of (most popular) web application vulnerabilities together with appropriate attacks.
 
 ![DSVW](http://i.imgur.com/W3Ske9B.png)
 
