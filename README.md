@@ -14,7 +14,7 @@ $ python dsvw.py
 Damn Small Vulnerable Web (DSVW) < 100 LoC (Lines of Code) #v0.1d
  by: Miroslav Stampar (@stamparm)
 
-[i] running HTTP server at '0.0.0.0:65412'...
+[i] running HTTP server at '127.0.0.1:65412'...
 ```
 
 and navigate your browser to http://127.0.0.1:65412/:
