@@ -13,8 +13,7 @@ CASES = (("Blind SQL Injection (<i>boolean</i>)", "?id=2", "/?id=2%20AND%20SUBST
 
 def init():
     global connection
-    connection = sqlite3.connect(":memory:", check_same_thread=False)
-    connection.isolation_level = None
+    connection = sqlite3.connect(":memory:", isolation_level=None, check_same_thread=False)
     cursor = connection.cursor()
     cursor.execute("CREATE TABLE users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, name TEXT, surname TEXT, password TEXT)")
     cursor.executemany("INSERT INTO users(id, username, name, surname, password) VALUES(NULL, ?, ?, ?, ?)", ((_.findtext("username"), _.findtext("name"), _.findtext("surname"), _.findtext("password")) for _ in xml.etree.ElementTree.fromstring(USERS_XML).findall("user")))
