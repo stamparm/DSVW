@@ -1,3 +1,5 @@
+![](http://i.imgur.com/6RlXnYP.jpg)
+
 Damn Small Vulnerable Web [![Python 2.6|2.7](https://img.shields.io/badge/python-2.6|2.7-yellow.svg)](https://www.python.org/) [![License](https://img.shields.io/badge/license-Public_domain-red.svg)](https://wiki.creativecommons.org/wiki/Public_domain)
 =========
 
