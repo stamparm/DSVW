@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import BaseHTTPServer, cgi, cStringIO, httplib, json, os, pickle, random, re, SocketServer, sqlite3, string, sys, subprocess, time, traceback, urllib, xml.etree.ElementTree
+import BaseHTTPServer, cgi, cStringIO, httplib, json, os, pickle, random, re, socket, SocketServer, sqlite3, string, sys, subprocess, time, traceback, urllib, xml.etree.ElementTree
 try:
     import lxml.etree
 except ImportError:
@@ -13,6 +13,7 @@ CASES = (("Blind SQL Injection (<i>boolean</i>)", "?id=2", "/?id=2%20AND%20SUBST
 
 def init():
     global connection
+    BaseHTTPServer.HTTPServer.allow_reuse_address = True
     connection = sqlite3.connect(":memory:", isolation_level=None, check_same_thread=False)
     cursor = connection.cursor()
     cursor.execute("CREATE TABLE users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, name TEXT, surname TEXT, password TEXT)")
@@ -81,7 +82,9 @@ class ReqHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             self.wfile.close()
 
 class ThreadingServer(SocketServer.ThreadingMixIn, BaseHTTPServer.HTTPServer):
-    pass
+    def server_bind(self):
+        self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        BaseHTTPServer.HTTPServer.server_bind(self)
 
 if __name__ == "__main__":
     init()
@@ -89,4 +92,8 @@ if __name__ == "__main__":
     try:
         ThreadingServer((LISTEN_ADDRESS, LISTEN_PORT), ReqHandler).serve_forever()
     except KeyboardInterrupt:
-        os._exit(1)
+        pass
+    except Exception, ex:
+        print "[x] exception occurred ('%s')" % ex
+    finally:
+        os._exit(0)
