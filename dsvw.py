@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 import BaseHTTPServer, cgi, cStringIO, httplib, json, os, pickle, random, re, socket, SocketServer, sqlite3, string, sys, subprocess, time, traceback, urllib, xml.etree.ElementTree
 try:
     import lxml.etree
