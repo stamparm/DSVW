@@ -87,7 +87,7 @@ class ThreadingServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
 
 if __name__ == "__main__":
     init()
-    print("%s #v%s\n by: %s\n\n[i] running HTTP server at '%s:%d'..." % (NAME, VERSION, AUTHOR, LISTEN_ADDRESS, LISTEN_PORT))
+    print("%s #v%s\n by: %s\n\n[i] running HTTP server at 'http://%s:%d'..." % (NAME, VERSION, AUTHOR, LISTEN_ADDRESS, LISTEN_PORT))
     try:
         ThreadingServer((LISTEN_ADDRESS, LISTEN_PORT), ReqHandler).serve_forever()
     except KeyboardInterrupt:
