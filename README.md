@@ -12,7 +12,7 @@ Quick start
 
 Run the following command:
 ```
-$ python dsvw.py 
+$ python3 dsvw.py 
 Damn Small Vulnerable Web (DSVW) < 100 LoC (Lines of Code) #v0.2a
  by: Miroslav Stampar (@stamparm)
 
