@@ -33,3 +33,14 @@ To install lxml via pip, run the following command:
 ```
 pip install -r requirements.txt
 ```
+
+Docker
+----
+1. build 
+```
+docker build -t dsvw .
+```
+2. run 
+```
+docker run -d -p 80:65412 dsvw
+```
