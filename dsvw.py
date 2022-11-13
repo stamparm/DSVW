@@ -1,5 +1,24 @@
 #!/usr/bin/env python
-import html, http.client, http.server, io, json, os, pickle, random, re, socket, socketserver, sqlite3, string, sys, subprocess, time, traceback, urllib.parse, urllib.request, xml.etree.ElementTree  # Python 3 required
+import html
+import http.client
+import http.server
+import io
+import json
+import os
+import pickle
+import random
+import re
+import socket
+import socketserver
+import sqlite3
+import string
+import subprocess
+import sys
+import time
+import traceback
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree  # Python 3 required
 
 try:
     import lxml.etree
