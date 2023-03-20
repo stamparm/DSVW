@@ -1,5 +1,3 @@
-![Sign](https://i.imgur.com/bovh598.png)
-
 Damn Small Vulnerable Web [![Python 3.x](https://img.shields.io/badge/python-3.x-yellow.svg)](https://www.python.org/) [![License](https://img.shields.io/badge/license-Unlicense-red.svg)](https://github.com/stamparm/DSVW/blob/master/LICENSE)
 =========
 
