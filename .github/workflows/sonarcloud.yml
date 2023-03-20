@@ -37,15 +37,14 @@ on:
 
 permissions:
   pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+  actions: read
+  contents: read
+  security-events: write
 
 jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
     steps:
       - uses: actions/checkout@v3
         with:
