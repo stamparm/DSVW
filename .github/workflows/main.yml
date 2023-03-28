@@ -1,7 +1,7 @@
 name: Main SampleVulnerableApp workflow
 
 on:
-  workflow_call:
+  workflow_dispatch:
 
 jobs:
   sec-scan-bandit:
