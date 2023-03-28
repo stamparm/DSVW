@@ -34,6 +34,7 @@ on:
   #pull_request:
   #  branches: [ "master" ]
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   pull-requests: read # allows SonarCloud to decorate PRs with analysis results
