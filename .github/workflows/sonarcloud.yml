@@ -35,6 +35,10 @@ on:
   #  branches: [ "master" ]
   workflow_dispatch:
   workflow_call:
+    secrets:
+      SONAR_TOKEN:
+        required: true
+        type: string
 
 permissions:
   pull-requests: read # allows SonarCloud to decorate PRs with analysis results

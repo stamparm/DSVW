@@ -10,6 +10,7 @@ jobs:
     uses: ./.github/workflows/codeql.yml
   sec-scan-sonarcloud:
     uses: ./.github/workflows/sonarcloud.yml
+    secrets: inherit
   deploy:
     runs-on: ubuntu-latest
     # require successfull scans
