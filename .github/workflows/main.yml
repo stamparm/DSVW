@@ -5,11 +5,11 @@ on:
 
 jobs:
   sec-scan-bandit:
-    uses: ./.github/workflows/bandit.yml@master
+    uses: ./.github/workflows/bandit.yml
   sec-scan-codeql:
-    uses: ./.github/workflows/codeql.yml@master
+    uses: ./.github/workflows/codeql.yml
   sec-scan-sonarcloud:
-    uses: ./.github/workflows/sonarcloud.yml@master
+    uses: ./.github/workflows/sonarcloud.yml
   deploy:
     runs-on: ubuntu-latest
     # require successfull scans
