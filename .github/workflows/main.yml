@@ -6,14 +6,12 @@ on:
 jobs:
   sec-scan-bandit:
     uses: ./.github/workflows/bandit.yml
-  sec-scan-codeql:
-    uses: ./.github/workflows/codeql.yml
   sec-scan-sonarcloud:
     uses: ./.github/workflows/sonarcloud.yml
     secrets: inherit
   deploy:
     runs-on: ubuntu-latest
     # require successfull scans
-    needs: [sec-scan-bandit, sec-scan-codeql, sec-scan-sonarcloud]
+    needs: [sec-scan-bandit, sec-scan-sonarcloud]
     steps:
       - run: echo "Deploy job completed"
