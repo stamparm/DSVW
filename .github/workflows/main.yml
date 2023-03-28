@@ -1,0 +1,18 @@
+name: Main SampleVulnerableApp workflow
+
+on:
+  workflow_call:
+
+jobs:
+  sec-scan-bandit:
+    uses: ./.github/workflows/bandit.yml@master
+  sec-scan-codeql:
+    uses: ./.github/workflows/codeql.yml@master
+  sec-scan-sonarcloud:
+    uses: ./.github/workflows/sonarcloud.yml@master
+  deploy:
+    runs-on: ubuntu-latest
+    # require successfull scans
+    needs: [sec-scan-bandit, sec-scan-codeql, sec-scan-sonarcloud]
+    steps:
+      - run: echo "Deploy job completed"
