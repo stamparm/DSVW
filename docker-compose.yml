@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  dsvw:
+    build: .
+    expose:
+      - 65412
+    ports:
+      - 65412:65412
+    restart: always
