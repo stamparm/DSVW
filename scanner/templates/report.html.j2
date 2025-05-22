@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AppSec AI Scan Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; background: #f4f7fa; }
+    h1 { color: #3a4c6b; }
+    .section { margin-bottom: 2rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #aaa; padding: 0.5rem; }
+    th { background: #3a4c6b; color: #fff; }
+    .critical { background: #ffb3b3; }
+    .high { background: #ffd480; }
+    .medium { background: #ffeeb3; }
+    .low { background: #c6e2b3; }
+    .ai-fix { font-style: italic; color: #2d742d; }
+  </style>
+</head>
+<body>
+  <h1>AppSec AI Scan Report</h1>
+  <p>This report summarizes code findings and AI remediation suggestions.</p>
+
+  {% for tool, findings in results.items() %}
+  <div class="section">
+    <h2>{{ tool|capitalize }} Results</h2>
+
+    {% if findings %}
+    <table>
+      <tr>
+        <th>Message</th>
+        <th>Severity</th>
+        <th>File / Location</th>
+        <th>AI Remediation</th>
+      </tr>
+      {% for f in findings %}
+      <tr class="{{ f.get('extra', {}).get('severity', f.get('severity', 'low')).lower() }}">
+        <td>{{ f.get('extra', {}).get('message', f.get('description', 'N/A')) }}</td>
+        <td>{{ f.get('extra', {}).get('severity', f.get('severity', 'N/A')) }}</td>
+        <td>
+          {{ f.get('path', f.get('file', 'unknown')) }}
+          {% if f.get('start', {}).get('line') %}
+            :{{ f.get('start', {}).get('line') }}
+          {% elif f.get('line') %}
+            :{{ f.get('line') }}
+          {% endif %}
+        </td>
+        <td class="ai-fix">{{ f.get('ai_remediation', 'N/A') }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+      <p>No issues found.</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+</body>
+</html>
