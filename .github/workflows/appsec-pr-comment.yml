@@ -1,0 +1,35 @@
+name: AppSec LLM Scanner – PR Comment
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: 📦 Install Semgrep & Dependencies
+        run: |
+          curl -sL https://github.com/returntocorp/semgrep/releases/latest/download/semgrep-linux-amd64 -o semgrep
+          chmod +x semgrep && sudo mv semgrep /usr/local/bin/
+          pip install openai requests jinja2 python-dotenv
+
+      - name: 🧪 Run AppSec Scanner
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python cli.py --repo . --scan all
+
+      - name: 💬 Comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          path: pr-findings.txt
