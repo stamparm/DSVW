@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+env/
+# IDE
+.vscode/
+.idea/
+# Reports, temp, logs
+reports/
+*.log
+*.db
+*.sqlite
+archive/
+# Environment/config
+.env
+.env.*
+# System files
+.DS_Store
+Thumbs.db
